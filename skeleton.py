@@ -13,6 +13,29 @@ DEBUG = True
 def index():
     return render_template('content.html')
 
+
+#@app.route("/xml")
+def xml():
+    link = ''
+    title = ''
+    subtitle = ''
+    teaser = ''
+    storyDate = ''
+    pubDate = ''
+    tags = []
+    bylines = []
+    image = ''
+    return render_template('nprml.xml',
+                            link=link,
+                            title=title,
+                            subtitle=subtitle,
+                            teaser=teaser,  # label teaser par with id="teaser" and scrape from page
+                            storyDate=storyDate,
+                            pubDate=pubDate,
+                            tags=tags,
+                            bylines=bylines,
+                            image=image)
+
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'build':
         freezer.freeze()
