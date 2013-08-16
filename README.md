@@ -1,7 +1,7 @@
 #VPR Project Skeleton
 Create and push static files for hosting on Amazon S3.
 
-This stack is used by VPR to publish news apps and can be used for anything from building a blog to creating web applications.
+This is the exact template used by VPR to create our news apps and single page builds. For a generic version of this project without any organization specific code, see [this parent repository](https://github.com/vprnet/project-skeleton).
 
 ## Technology
 - [Flask](http://flask.pocoo.org/): Used for local development
@@ -79,6 +79,9 @@ Here are some instructions for developing with Sass:
 
 ## Front-End Web Tool
 I use [CodeKit](https://incident57.com/codekit/) during front end development. It manages my static assets by concatenating and minifying all of my stylesheets and javascript automatically after any modifications. The "Frameworks" feature lets me utilize base stylesheets across multiple projects while only needing to maintain a single copy of the file.
+
+##CodeKit Framework Note
+I've decided that CodeKit's framework feature was worth a little extra trouble when it came to clarity of this repository. I've added a `template` directory which contains the .scss files that make up my CodeKit VPR-Framework. The framework itself contains symlinks to these files, so modifying the files in the repository will eventually change them in the framework (and eventually, on s3).
 
 ## Author
 [Matt Parrilla](http://twitter.com/mattparrilla)
