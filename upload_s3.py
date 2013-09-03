@@ -30,6 +30,12 @@ content_types = {
 }
 
 
+def sub_bucket():
+    s = os.getcwd().rsplit('/')[-1]
+    sub_bucket = 'apps/' + s
+    return sub_bucket
+
+
 def directory_list(argv, directory='build'):
     """Creates a list of all non-excluded files in current directory
     and below"""
@@ -92,10 +98,10 @@ def set_metadata():
             ext = '.html'
 
         if ext == '.html':  # deletes '.html' from s3 key so no ext on url
-            k.key = os.path.splitext(filename)[0]
+            k.key = sub_bucket() + os.path.splitext(filename)[0]
             k.set_metadata('Expires', time.time() + 3600)
         else:
-            k.key = '/' + filename  # strip leading 0
+            k.key = sub_bucket() + '/' + filename  # strip leading 0
             k.set_metadata('Expires', expires_header)
 
         if ext == '.css' or ext == '.js' or ext == '.html':
