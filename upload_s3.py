@@ -94,6 +94,8 @@ def set_metadata():
     for filename in s3_list:
         k = Key(mybucket)
         ext = os.path.splitext(filename)[1]
+        if ext == '':
+            ext = '.html'
 
         if ext == '.html':  # deletes '.html' from s3 key so no ext on url
             k.key = sub_bucket() + os.path.splitext(filename)[0]
